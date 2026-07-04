@@ -1,0 +1,3 @@
+- [Legacy PHP nginx extensionless routing](nginx-extensionless-php-routing.md) — try_files with `$uri.php` as a fallback breaks POST (serves static/405); use a named location + `rewrite ... last` instead.
+- [Sandbox subprocess stdin crash](sandbox-subprocess-stdin-crash.md) — bash tool can crash on commands reading redirected stdin (e.g. `mariadbd --bootstrap`); run via code_execution's execSync instead.
+- [Legacy MySQL5 codebase quirks](legacy-mysql5-codebase-quirks.md) — old PHP5-era game code relies on relaxed sql_mode and empty-seed autoincrement inserts; don't "fix" schema/mode without checking callers.

@@ -1,0 +1,46 @@
+modules = ["php-8.2", "nodejs-20", "web", "python-3.12"]
+[agent]
+expertMode = true
+stack = "BEST_EFFORT_FALLBACK"
+
+[nix]
+channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+DB_HOST = "127.0.0.1"
+DB_PORT = "3306"
+DB_NAME = "hackerexperience"
+DB_USER = "heuser"
+DB_PASS = "hepassword123"
+DB_SOCKET = "/home/runner/workspace/.mysql/run/mysqld.sock"
+ADMIN_STATUS_KEY = "0e2bda3e6badda0835f4b11f7316145932e90eb91eccc8a6"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bash /home/runner/workspace/start.sh"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 5000
+externalPort = 80

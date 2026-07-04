@@ -1,0 +1,7 @@
+forum/cache/*
+/wiki/conf/*
+
+.vscode
+
+# Local MariaDB data/runtime files (Replit dev environment)
+.mysql/
